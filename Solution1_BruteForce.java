@@ -1,3 +1,5 @@
+import java.util.Stack;
+
 /**
  * Solution 1 : Brute Force
  *
@@ -21,6 +23,24 @@
 
 
 public class Solution1_BruteForce {
+
+    private static boolean isValid(String text) {
+            Stack<Character> stack = new Stack<>();
+        
+            for (char ch : text.toCharArray()) {
+        
+                if (ch == '(') {        
+                    stack.push(ch);        
+                } else {        
+                    if (stack.isEmpty()) {
+                        return false;
+                    }        
+                    stack.pop();
+                }
+            }
+        
+            return stack.isEmpty();
+        }
 
     public static int longestValidParentheses(String input) {
 
