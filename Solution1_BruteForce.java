@@ -41,13 +41,34 @@ public class Solution1_BruteForce {
         
             return stack.isEmpty();
         }
+    
 
     public static int longestValidParentheses(String input) {
 
-        // TODO: Implement
-
-        return 0;
+        int maxLength = 0;
+    
+        for (int start = 0; start < input.length(); start++) {
+    
+            for (int end = start; end < input.length(); end++) {
+    
+                int currentLength = end - start + 1;
+    
+                // valid substring length must be even
+                if (currentLength % 2 != 0) {
+                    continue;
+                }
+    
+                String current = input.substring(start, end + 1);
+    
+                if (isValid(current)) {
+                    maxLength = Math.max(maxLength, currentLength);
+                }
+            }
+        }
+    
+        return maxLength;
     }
+    
 
     public static void main(String[] args) {
 
